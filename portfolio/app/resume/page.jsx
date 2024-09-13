@@ -1,6 +1,14 @@
 "use client";
 
-import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaReact,
+  FaFigma,
+  FaSass,
+  FaNpm,
+} from "react-icons/fa";
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -17,6 +25,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { list } from "postcss";
+import { CiPhone } from "react-icons/ci";
+import { GiBearFace } from "react-icons/gi";
 
 const about = {
   title: "About me",
@@ -53,7 +63,7 @@ const about = {
     },
     {
       fieldName: "Languages",
-      fieldValue: "English, Ukrainian",
+      fieldValue: "English (B-1), Ukrainian",
     },
   ],
 };
@@ -133,6 +143,22 @@ const skills = {
       icon: <SiRedux />,
       name: "Redux",
     },
+    {
+      icon: <FaSass />,
+      name: "Sass",
+    },
+    {
+      icon: <GiBearFace />,
+      name: "Zustand",
+    },
+    {
+      icon: <FaNpm />,
+      name: "NPM",
+    },
+    {
+      icon: <FaFigma />,
+      name: "Figma",
+    },
   ],
 };
 
@@ -156,10 +182,10 @@ export default function Resume() {
           className="flex flex-col xl:flex-row gap-[60px]"
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
+            <TabsTrigger value="about">About me</TabsTrigger>
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="about">About me</TabsTrigger>
           </TabsList>
 
           <div className="min-h-[70vh] w-full">
@@ -227,28 +253,48 @@ export default function Resume() {
                     {skills.description}
                   </p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px]">
-                  {skills.skillList.map((skill, index) => (
+                <ScrollArea className="h-[400px]">
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
+                    {skills.skillList.map((skill, index) => (
+                      <li key={index}>
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                {skill.icon}
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="capitalize">{skill.name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </li>
+                    ))}
+                  </ul>
+                </ScrollArea>
+              </div>
+            </TabsContent>
+
+            <TabsContent
+              value="about"
+              className="w-full text-center xl:text-left"
+            >
+              <div className="flex flex-col gap-[30px]">
+                <h3 className="text-4xl font-bold">{about.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                  {about.description}
+                </p>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
+                  {about.info.map((item, index) => (
                     <li key={index}>
-                      {/* {skill.icon} */}
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                            <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                              {skill.icon}
-                            </div>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="">{skill.name}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
+                      <p className="text-white/60 ">{item.fieldName}</p>
+                      <p className="text-xl">{item.fieldValue}</p>
                     </li>
                   ))}
                 </ul>
               </div>
             </TabsContent>
-            <TabsContent value="about">About</TabsContent>
           </div>
         </Tabs>
       </div>

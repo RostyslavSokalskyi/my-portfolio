@@ -4,26 +4,33 @@ import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const services = [
+export const services = [
   {
     num: "01",
     title: "Web Development",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.",
+      "I specialise in creating modern, functional and beautiful websites that meet your business needs. I use the latest technologies and frameworks to ensure high performance and excellent user experience.",
     href: "",
   },
   {
     num: "02",
-    title: "Mobile Development",
+    title: "SEO",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.",
+      "Improve the loading speed and overall performance of your system. I analyse and implement solutions to reduce load times, increase SEO rankings, and improve the mobile experience.",
     href: "",
   },
   {
     num: "03",
-    title: "Frontend Development",
+    title: "Responsive Design",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.",
+      "Your website will look great on any device thanks to my responsive design. I will ensure that your website is accessible and user-friendly on all screens - from mobile phones to desktops.",
+    href: "",
+  },
+  {
+    num: "04",
+    title: "API ",
+    description:
+      "    I will ensure seamless interaction between your website and other systems through API integration. I can help you integrate payment systems, and other components that extend the functionality of your website. ",
     href: "",
   },
 ];
